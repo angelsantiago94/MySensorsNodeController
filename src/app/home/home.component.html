@@ -1,0 +1,11 @@
+
+<div class="jumbotron">
+  <h1>Home</h1>
+</div>
+<div ace-editor  [(text)]="text" [options]="options" (textChanged)="onChange($event)"  [mode]="'javascript'"  [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000"  style="min-height: 200px; width:100%; overflow: auto;">
+</div>
+<button type="button" class="btn btn-success" (click)="botonPulsado()">Enviar</button>
+
+
+
+
