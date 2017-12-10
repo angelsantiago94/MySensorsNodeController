@@ -1,15 +1,15 @@
 <div class="jumbotron">
-<form class="form-horizontal">
+<form (submit)="registroSubmit()" class="form-horizontal">
     <fieldset>
     
     <!-- Form Name -->
-    <legend>Registro</legend>
+    <legend><h2>Registro</h2></legend>
     
     <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="nombreUsuario">Nombre de usuario</label>  
       <div class="col-md-4">
-      <input id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Nombre de usuario" class="form-control input-md" required="">
+      <input id="nombreUsuario" [(ngModel)]="nombreUsuario" name="nombreUsuario" type="text" placeholder="Nombre de usuario" class="form-control input-md" required="">
         
       </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="email">Email</label>  
       <div class="col-md-4">
-      <input id="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" class="form-control input-md" required="">
+      <input id="email" [(ngModel)]="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" class="form-control input-md" required="">
         
       </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="passport">Contraseña</label>
       <div class="col-md-4">
-        <input id="passport" name="passport" type="password" placeholder="*****" class="form-control input-md" required="">
+        <input id="passport" [(ngModel)]="password" name="passport" type="password" placeholder="*****" class="form-control input-md" required="">
         
       </div>
     </div>
@@ -36,7 +36,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="resgistrarse"></label>
       <div class="col-md-4">
-        <button id="resgistrarse" name="resgistrarse" class="btn btn-primary">Registrarse</button>
+        <button type="submit" id="resgistrarse" name="resgistrarse" class="btn btn-primary">Registrarse</button>
       </div>
     </div>
     

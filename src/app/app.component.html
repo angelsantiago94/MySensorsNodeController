@@ -1,18 +1,19 @@
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">MySensorNodeController</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-      <li><a routerLink="/contenido" routerLinkActive="active">Contenido</a></li>   
+      <li routerLinkActive="active"routerLinkActiveOptions = "{exact:true}"><a routerLink="/home">Home</a></li>
+      <li routerLinkActive="active"routerLinkActiveOptions = "{exact:true}"><a routerLink="/contenido" >Contenido</a></li>   
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/registro" routerLinkActive="active"><span class="glyphicon glyphicon-user"></span>Registro</a></li>
-        <li><a routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+        <li routerLinkActive="active"routerLinkActiveOptions = "{exact:true}"><a routerLink="/registro"><span class="glyphicon glyphicon-user"></span>Registro</a></li>
+        <li routerLinkActive="active" routerLinkActiveOptions = "{exact:true}"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
     </ul>
   </div>
 </nav>
 <div class="container">
+    <flash-messages></flash-messages>
   <router-outlet></router-outlet>
 </div>
