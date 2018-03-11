@@ -17,6 +17,9 @@ import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { ValidateService} from './validate.service';
 import {AuthService} from './auth.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -29,7 +32,9 @@ import {AuthService} from './auth.service';
     ObjetoListComponent,
     ObjetoDetalleComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,7 @@ import {AuthService} from './auth.service';
     FlashMessagesModule.forRoot(),
     HttpModule
   ],
-  providers: [ValidateService, AuthService],
+  providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

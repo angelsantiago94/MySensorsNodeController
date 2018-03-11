@@ -6,8 +6,15 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
+var mysensors = require("../mysensors/index");
+var controller = mysensors.usingSerialGateway("/dev/serial.path"); // or "COMx" for Windows mates
+// or
+//var controller = mysensors.usingEthernetGateway("host or ip", port); // Should also work with the ESP8266 gateway
+
 const Objeto = require('../models/objetos-prueba');
 const User = require('../models/usuarios');
+const Sensor = require('../models/sensors');
+const Node = require('../models/nodes');
 
 const db ="mongodb://root:root@ds131546.mlab.com:31546/my-sensors-controller";
 mongoose.Promise=global.Promise;
@@ -146,4 +153,27 @@ router.get('/perfil',passport.authenticate('jwt',{session:false}),function(req,r
     res.json({usuario: req.user});
 });
 
+
+//Controler
+
+//nuevo nodo
+controller.on("newNode", function(n) {
+    console.log("Inserción en la base de datos de un nodo");
+    var newNodo = new Node();
+    newNodo.id = n.id;
+    newNodo.protocol = n.protocol;
+    newNodo.sketchName = n.sketchName;
+    newNodo.sketchName = n.sketchName;
+    newNodo.sketchVersion = n.sketchVersion;
+    newNodo.save(function(err,nodoInsertado){
+        if(err){
+            console.log("Error al insertar el nodo: "+err);
+        }else{
+            res.json(nodoInsertado);
+        }
+    });
+  });
+
+
 module.exports = router;
+module.exports = controller;
