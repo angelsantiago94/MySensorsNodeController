@@ -62,7 +62,7 @@ router.post('/objeto',function(req,res){
         if(err){
             console.log("Error al insertar el objeto: "+err);
         }else{
-            console.log("objetoInsertado: ",objetoInsertado);
+            res.json(objetoInsertado);
         }
     });
 });

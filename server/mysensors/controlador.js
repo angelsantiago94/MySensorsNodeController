@@ -17,7 +17,7 @@ controller.on("newNode", function(n) {
         if(err){
             console.log("Error al insertar el nodo: "+err);
         }else{
-            res.json(nodoInsertado);
+            console.log("nodo insertado", nodoInsertado);
         }
     });
   });
