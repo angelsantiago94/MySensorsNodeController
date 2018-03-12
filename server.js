@@ -31,8 +31,8 @@ app.use('/api',api);
 app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname,'dist/index.html'));
 });
-var mysensors = require("./server/mysensors/index");
-var controller = mysensors.usingEthernetGateway("192.168.1.69", 5003);
+
+var apiMySensors = require('./server/mysensors/controlador');
 
 
 app.listen(port,function(){

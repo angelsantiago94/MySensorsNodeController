@@ -1,4 +1,4 @@
-const mysensors = require('index');
+const mysensors = require('./index');
 var controller = mysensors.usingEthernetGateway("192.168.1.69", 5003);
 
 
