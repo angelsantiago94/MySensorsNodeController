@@ -1,74 +1,59 @@
 const mysensors = require('./index');
 var controller = mysensors.usingEthernetGateway("192.168.1.69", 5003);
 
+
+const mongoose = require('mongoose');
+const db ="mongodb://root:root@ds131546.mlab.com:31546/my-sensors-controller";
+mongoose.Promise=global.Promise;
+
+mongoose.connect(db,function(err){
+    if(err){
+        console.error("Error al conectar a la base de datos: " + err);
+    }
+});
+
 const Sensor = require('../models/sensors');
 const Node = require('../models/nodes');
 
 
 controller.on("newNode", function(n) {
-    console.log("Inserción en la base de datos de un nodo");
-    var newNodo = new Node();
-    
-    newNodo.id = n.id;
-    newNodo.protocol = n.protocol;
-    newNodo.sketchName = n.sketchName;
-    newNodo.sesors = n.sensors;
-    newNodo.sketchVersion = n.sketchVersion;
-    newNodo.save(function(err,nodoInsertado){
-        if(err){
-            console.log("Error al insertar el nodo: "+err);
+    console.log("Inserción en la base de datos de un nodo: ",n);
+    Node.insertOne(n,function(err, res){
+        if (err){
+            console.log("Error al insertar nodo",err);
         }else{
-            console.log("nodo insertado", nodoInsertado);
+            console.log("nodo insertado",n);
         }
-    });
+    })
   });
 
   controller.on("update", function(n) {
-    console.log("Actualizacion en la base de datos de un nodo");
-    var newNodo = new Node();
-    
-    newNodo.id = n.id;
-    newNodo.protocol = n.protocol;
-    newNodo.sketchName = n.sketchName;
-    newNodo.sesors = n.sensors;
-    newNodo.sketchVersion = n.sketchVersion;
-    newNodo.update({id:n.id},function(err,nodoInsertado){
-        if(err){
-            console.log("Error al actualizar el nodo: "+err);
+    console.log("Actualizacion en la base de datos de un nodo: ",n);
+    Node.updateOne({id:n.id},n,function(err,res){
+        if (err){
+            console.log("Error al actualizar nodo",err);
         }else{
-            console.log("nodo actualizado", nodoInsertado);
+            console.log("nodo actualizado",n);
         }
     });
+    
   });
 
   controller.on("sensorUpdate", function(n,s) {
     console.log("Actualizacion en la base de datos de un sensor");
-    var newNodo = new Node();
-    
-    newNodo.id = n.id;
-    newNodo.protocol = n.protocol;
-    newNodo.sketchName = n.sketchName;
-    newNodo.sesors = n.sensors;
-    newNodo.sketchVersion = n.sketchVersion;
-    newNodo.update({id:n.id},function(err,nodoInsertado){
-        if(err){
-            console.log("Error al actualizar el nodo: "+err);
+    Node.updateOne({id:n.id},n,function(err,res){
+        if (err){
+            console.log("Error al actualizar nodo",err);
         }else{
-            console.log("nodo actualizado", nodoInsertado);
+            console.log("nodo actualizado",n);
         }
     });
-
-    var newSensor = new Sensor();
-    
-    newSensor.id = s.id;
-    newSensor.value = s.value;
-    newSensor.type = s.type;
-    newSensor.updateTime = s.updateTime;
-    newSensor.update({id:s.id},function(err,nodoInsertado){
-        if(err){
-            console.log("Error al actualizar el nodo: "+err);
+    s.updateTime=new Date();
+    Sensor.updateOne({id:s.id},s,function(err,res){
+        if (err){
+            console.log("Error al actualizar sensor",err);
         }else{
-            console.log("nodo actualizado", nodoInsertado);
+            console.log("sensor actualizado",s);
         }
     });
   });
@@ -76,17 +61,14 @@ controller.on("newNode", function(n) {
   controller.on("message", function(m) {
     console.log("Mensaje Recibido", m);
     if(m.sensor!=255){
-        var newSensor = new Sensor();
-        newSensor.id= m.sensor;
-        newSensor.value = m.payload;
-        newSensor.type = m.type;
-        newSensor.updateTime = new Date();
-        newSensor.update({id:m.sensor},function(err,nodoInsertado){
-            if(err){
-                console.log("Error al insertar el sensor: "+err);
+        Sensor.updateOne({id:m.sensor},{value:m.payload, updateTime: new Date()
+        },function(err,res){
+            if (err){
+                console.log("Error al actualizar sensor",err);
             }else{
-                console.log("sensor insertado", nodoInsertado);
+                console.log("sensor actualizado",s);
             }
         });
     }
+    
   });
