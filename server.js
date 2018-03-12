@@ -5,11 +5,6 @@ const cors = require('cors');
 const passport = require('passport');
 const request = require('request');
  
-request('http://localhost:3000/api/objetos', { json: true }, (err, res, body) => {
-  if (err) { return console.log(err); }
-  console.log(body);
-});
-
 const api = require('./server/routes/api');
 
 const port = 3000;
@@ -31,11 +26,13 @@ app.use(passport.session());
 require('./server/config/passport')(passport);
 
 app.use('/api',api);
-app.use(api.controller);
+//app.use(api.controller);
 
 app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname,'dist/index.html'));
 });
+var mysensors = require("./server/mysensors/index");
+var controller = mysensors.usingEthernetGateway("192.168.1.69", 5003);
 
 
 app.listen(port,function(){

@@ -6,8 +6,8 @@ const nodeSchema = new Schema({
     id: Number,
     protocol: String,
     sketchName: String,
-    sketchVersion: String,
-    sensors: [Sensors ]
+    sketchVersion: String
+    //sensors: [Sensors ]
 });
 
 module.exports = mongoose.model('node',nodeSchema,'Nodes');

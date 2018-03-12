@@ -7,7 +7,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
 var mysensors = require("../mysensors/index");
-var controller = mysensors.usingSerialGateway("/dev/serial.path"); // or "COMx" for Windows mates
+//var controller = mysensors.usingSerialGateway("/dev/serial.path"); // or "COMx" for Windows mates
 // or
 //var controller = mysensors.usingEthernetGateway("host or ip", port); // Should also work with the ESP8266 gateway
 
@@ -157,7 +157,7 @@ router.get('/perfil',passport.authenticate('jwt',{session:false}),function(req,r
 //Controler
 
 //nuevo nodo
-controller.on("newNode", function(n) {
+/*controller.on("newNode", function(n) {
     console.log("Inserción en la base de datos de un nodo");
     var newNodo = new Node();
     newNodo.id = n.id;
@@ -173,7 +173,7 @@ controller.on("newNode", function(n) {
         }
     });
   });
-
+*/
 
 module.exports = router;
-module.exports = controller;
+//module.exports = controller;

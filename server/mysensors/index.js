@@ -4,7 +4,7 @@ module.exports = function(gateway) {
 	return new Controller(gateway);
 };
 
-module.exports.usingSerialGateway = function(port, baud) {
+/*module.exports.usingSerialGateway = function(port, baud) {
 	if(!port) throw new Error("Port is required when using the serial gateway.")
 
 	var SerialPort = require("serialport").SerialPort,
@@ -28,9 +28,9 @@ module.exports.usingSerialGateway = function(port, baud) {
 
 	return new Controller(gateway);
 };
-
+*/
 module.exports.usingEthernetGateway = function(address, port, options) {
-	address = address || "192.168.178.66";
+	address = address || "192.168.178.69";
 	port = port || 5003;
 	options = options || {};
 	options.timeout = options.hasOwnProperty('timeout') ? options.timeout : 60000;
