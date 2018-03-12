@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const nodeSchema = new Schema({
-    id: Number,
+    id:{
+        type: Number,
+        unique: true
+    } ,
     protocol: String,
     sketchName: String,
     sketchVersion: String,

@@ -8,7 +8,7 @@ const Node = require('../models/nodes');
 controller.on("newNode", function(n) {
     console.log("Inserción en la base de datos de un nodo");
     var newNodo = new Node();
-    newNodo._id = n.id;
+    
     newNodo.id = n.id;
     newNodo.protocol = n.protocol;
     newNodo.sketchName = n.sketchName;
@@ -26,13 +26,13 @@ controller.on("newNode", function(n) {
   controller.on("update", function(n) {
     console.log("Actualizacion en la base de datos de un nodo");
     var newNodo = new Node();
-    newNodo._id = n.id;
+    
     newNodo.id = n.id;
     newNodo.protocol = n.protocol;
     newNodo.sketchName = n.sketchName;
     newNodo.sesors = n.sensors;
     newNodo.sketchVersion = n.sketchVersion;
-    newNodo.update(function(err,nodoInsertado){
+    newNodo.update({id:n.id},function(err,nodoInsertado){
         if(err){
             console.log("Error al actualizar el nodo: "+err);
         }else{
@@ -44,13 +44,13 @@ controller.on("newNode", function(n) {
   controller.on("sensorUpdate", function(n,s) {
     console.log("Actualizacion en la base de datos de un sensor");
     var newNodo = new Node();
-    newNodo._id = n.id;
+    
     newNodo.id = n.id;
     newNodo.protocol = n.protocol;
     newNodo.sketchName = n.sketchName;
     newNodo.sesors = n.sensors;
     newNodo.sketchVersion = n.sketchVersion;
-    newNodo.update(function(err,nodoInsertado){
+    newNodo.update({id:n.id},function(err,nodoInsertado){
         if(err){
             console.log("Error al actualizar el nodo: "+err);
         }else{
@@ -59,12 +59,12 @@ controller.on("newNode", function(n) {
     });
 
     var newSensor = new Sensor();
-    newSensor._id = s.id;
+    
     newSensor.id = s.id;
     newSensor.value = s.value;
     newSensor.type = s.type;
     newSensor.updateTime = s.updateTime;
-    newSensorw.update(function(err,nodoInsertado){
+    newSensorw.update({id:s.id},function(err,nodoInsertado){
         if(err){
             console.log("Error al actualizar el nodo: "+err);
         }else{
