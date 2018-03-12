@@ -64,7 +64,7 @@ controller.on("newNode", function(n) {
     newSensor.value = s.value;
     newSensor.type = s.type;
     newSensor.updateTime = s.updateTime;
-    newSensorw.update({id:s.id},function(err,nodoInsertado){
+    newSensor.update({id:s.id},function(err,nodoInsertado){
         if(err){
             console.log("Error al actualizar el nodo: "+err);
         }else{
