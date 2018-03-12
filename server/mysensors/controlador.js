@@ -49,7 +49,7 @@ controller.on("newNode", function(n) {
         }
     });
     s.updateTime=new Date();
-    Sensor.updateOne({id:s.id},{value:s.value, updateTime: new Date(),function(err,res){
+    Sensor.updateOne({id:s.id},{value:s.value, updateTime: new Date()},function(err,res){
         if (err){
             console.log("Error al actualizar sensor",err);
         }else{
