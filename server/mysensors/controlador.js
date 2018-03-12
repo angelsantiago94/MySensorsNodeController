@@ -75,4 +75,18 @@ controller.on("newNode", function(n) {
 
   controller.on("message", function(m) {
     console.log("Mensaje Recibido", m);
+    if(m.sensor!=255){
+        var newSensor = new Sensor();
+        newSensor.id= m.sensor;
+        newSensor.value = m.playload;
+        newSensor.type = m.type;
+        newSensor.updateTime = new Date();
+        newSensor.save(function(err,nodoInsertado){
+            if(err){
+                console.log("Error al insertar el sensor: "+err);
+            }else{
+                console.log("sensor insertado", nodoInsertado);
+            }
+        });
+    }
   });
