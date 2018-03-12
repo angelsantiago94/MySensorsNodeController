@@ -67,7 +67,7 @@ controller.on("newNode", function(n) {
             if (err){
                 console.log("Error al actualizar sensor",err);
             }else{
-                console.log("sensor actualizado",m);
+                console.log("sensor actualizado por mensaje",m);
             }
         });
     }
