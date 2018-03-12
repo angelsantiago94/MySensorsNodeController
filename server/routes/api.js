@@ -175,5 +175,30 @@ router.get('/perfil',passport.authenticate('jwt',{session:false}),function(req,r
   });
 */
 
+
+//Sensores 
+router.get('/sensores',function(req,res){
+    console.log("Peticion Get de todos los sensores");
+    Sensor.find({}).exec(function(err,sensores){
+        if(err){
+            console.error("Error al buscar los sensores en la base de datos: "+err);
+        }else{
+            res.json(sensores);
+        }
+    });
+});
+
+//Sensores 
+router.get('/sensores/:id',function(req,res){
+    console.log("Peticion Get de todos los sensores");
+    Sensor.findById(req.params.id).exec(function(err,sensores){
+        if(err){
+            console.error("Error al buscar los sensores en la base de datos: "+err);
+        }else{
+            res.json(sensores);
+        }
+    });
+});
+
 module.exports = router;
 //module.exports = controller;
