@@ -20,6 +20,8 @@ import {AuthService} from './auth.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AuthGuard } from './auth.guard';
+import { SensorListComponent } from './sensor-list/sensor-list.component';
+import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 
 
 
@@ -34,7 +36,9 @@ import { AuthGuard } from './auth.guard';
     RegistroComponent,
     LoginComponent,
     NavbarComponent,
-    PerfilComponent
+    PerfilComponent,
+    SensorListComponent,
+    SensorDetailComponent
   ],
   imports: [
     BrowserModule,

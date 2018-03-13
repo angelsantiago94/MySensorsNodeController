@@ -1,0 +1,23 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <label *ngIf="!editNombre">
+      {{sensor.nombre}}
+    </label>
+    <div *ngIf="editNombre" class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+      <input type="input" class="form-control" name="nombre" required placeholder="Nombre" [(ngModel)]="sensor.nombre">
+    </div>
+    </div>
+    <div class="panel-body">
+      <img class="img-responsive" src="../../assets/termometro.png">
+    </div>
+    <div class="panel-body">
+        <label>Valor:</label>{{sensor.value}}
+    </div>
+    <div class="panel-body">
+        <label>Última actualización:</label>{{sensor.updateTime}}
+    </div>
+    <div class="panel-footer">
+        <span class="glyphicon glyphicon-edit" (click)="onEditClick()"></span><label>Editar Nombre</label>
+    </div>
+</div>
