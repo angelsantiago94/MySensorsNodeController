@@ -189,7 +189,7 @@ router.get('/sensores',function(req,res){
 });
 
 //Sensores 
-router.get('/sensores/:id',function(req,res){
+router.get('/sensores/getById/:id',function(req,res){
     console.log("Peticion Get de todos los sensores");
     Sensor.findById(req.params.id).exec(function(err,sensores){
         if(err){
