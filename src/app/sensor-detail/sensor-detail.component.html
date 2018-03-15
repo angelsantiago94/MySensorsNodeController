@@ -4,8 +4,8 @@
       {{sensor.nombre}}
     </label>
     <div *ngIf="editNombre" class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
       <input type="input" class="form-control" name="nombre" required placeholder="Nombre" [(ngModel)]="sensor.nombre">
+      <span class="input-group-addon" (click)="onEditNombre()"><i class="glyphicon glyphicon-edit"></i></span>
     </div>
     </div>
     <div class="panel-body">
@@ -18,6 +18,6 @@
         <label>Última actualización:</label>{{sensor.updateTime}}
     </div>
     <div class="panel-footer">
-        <span class="glyphicon glyphicon-edit" (click)="onEditClick()"></span><label>Editar Nombre</label>
+        <a (click)="onEditClick()"><span class="glyphicon glyphicon-edit"></span>Editar Nombre</a>
     </div>
 </div>

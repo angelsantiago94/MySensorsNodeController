@@ -200,5 +200,20 @@ router.get('/sensores/:id',function(req,res){
     });
 });
 
+router.put('/sensores/setNombre/:id',function(req,res){
+    console.log("Edición en la base de datos de un sensor con id="+req.params.id);
+    Sensor.findByIdAndUpdate(req.params.id,{
+        $set: {
+            nombre: req.body.nombre
+        }
+    },{new:true},function(err,sensorEditado){
+        if(err){
+            console.log("Error en la edicion del sensor");
+        }else{
+            res.json(sensorEditado);
+        }
+    });
+});
+
 module.exports = router;
 //module.exports = controller;
