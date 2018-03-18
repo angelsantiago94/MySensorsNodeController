@@ -24,8 +24,10 @@ import { SensorListComponent } from './sensor-list/sensor-list.component';
 import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ListaTareasComponent } from './lista-tareas/lista-tareas.component';
 import { TareaComponent } from './tarea/tarea.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { TareaComponent } from './tarea/tarea.component';
     SensorListComponent,
     SensorDetailComponent,
     ListaTareasComponent,
-    TareaComponent
+    TareaComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,8 +54,10 @@ import { TareaComponent } from './tarea/tarea.component';
     FormsModule,
     FlashMessagesModule.forRoot(),
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    BootstrapModalModule
   ],
+  entryComponents:[ModalComponent],
   providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })

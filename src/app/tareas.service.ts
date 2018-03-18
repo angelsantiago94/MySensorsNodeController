@@ -5,7 +5,7 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class TareasService {
 
-  private _getUrl = "http://nodehome.ddns.net:3000/api/tareas/";
+  private _getUrl = "http://nodehome.ddns.net:3000/api/tareas/recibidas/";
   private _postUrl = "http://nodehome.ddns.net:3000/api/tareas/";
   constructor( private _http: Http) { }
 
