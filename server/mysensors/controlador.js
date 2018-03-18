@@ -1,6 +1,8 @@
 const mysensors = require('./index');
 var controller = mysensors.usingEthernetGateway("192.168.1.69", 5003);
 
+const express = require('express');
+const router = express.Router();
 
 const mongoose = require('mongoose');
 const db ="mongodb://root:root@ds131546.mlab.com:31546/my-sensors-controller";
@@ -73,3 +75,15 @@ controller.on("newNode", function(n) {
     }
     
   });
+
+  router.post('/sendMensaje',function(req,res){
+    console.log("Enviar el mensaje",req.body);
+    controller.sendMessage({
+        destination: req.body.destination,
+        sensor: req.body.sensor,
+        command: req.body.command,
+        type: req.body.type,
+        payload: req.body.payload
+      });
+    res.json({codigoRespuesta:"OK"});
+});

@@ -28,6 +28,7 @@ export class SensorDetailComponent implements OnInit {
 
   onEditNombre(){
     console.log(this.sensor);
-    this._sensorService.updateNombreSensores(this.sensor._id, this.sensor.nombre).subscribe(resSensorData => console.log("exito"));
+    this._sensorService.updateNombreSensores(this.sensor._id, this.sensor.nombre).subscribe(resSensorData => { this.sensor = resSensorData;
+      this.editNombre = false; } );
   }
 }
