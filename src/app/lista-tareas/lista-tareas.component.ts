@@ -13,11 +13,11 @@ import { TareasService } from '../tareas.service';
 export class ListaTareasComponent implements OnInit {
 
   tareas: Array<Tarea>;
-  
+  usuario: any;
   constructor(private _tareaService: TareasService) { }
 
   ngOnInit() {
-    this._tareaService.getTareas(usuario).subscribe(resSensorData => this.tareas = resSensorData);
+    this._tareaService.getTareas(this.usuario).subscribe(resSensorData => this.tareas = resSensorData);
   }
 
 }
