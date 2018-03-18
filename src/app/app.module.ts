@@ -23,7 +23,9 @@ import { AuthGuard } from './auth.guard';
 import { SensorListComponent } from './sensor-list/sensor-list.component';
 import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ListaTareasComponent } from './lista-tareas/lista-tareas.component';
+import { TareaComponent } from './tarea/tarea.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
     NavbarComponent,
     PerfilComponent,
     SensorListComponent,
-    SensorDetailComponent
+    SensorDetailComponent,
+    ListaTareasComponent,
+    TareaComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
     AceEditorModule,
     FormsModule,
     FlashMessagesModule.forRoot(),
-    HttpModule
+    HttpModule,
+    NgbModule.forRoot()
   ],
   providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

@@ -15,6 +15,7 @@ const Objeto = require('../models/objetos-prueba');
 const User = require('../models/usuarios');
 const Sensor = require('../models/sensors');
 const Node = require('../models/nodes');
+const Tarea = require('../models/tareas');
 
 const db ="mongodb://root:root@ds131546.mlab.com:31546/my-sensors-controller";
 mongoose.Promise=global.Promise;
@@ -153,6 +154,55 @@ router.get('/perfil',passport.authenticate('jwt',{session:false}),function(req,r
     res.json({usuario: req.user});
 });
 
+//Tareas
+router.get('/tareas',function(req,res){
+    console.log("Peticion Get de todos las");
+    Tarea.find({}).exec(function(err,tareas){
+        if(err){
+            console.error("Error al buscar las tareas en la base de datos: "+err);
+        }else{
+            res.json(tareas);
+        }
+    });
+});
+
+router.get('/tareas/enviadas/:id',function(req,res){
+    console.log("Peticion Get de todos las");
+    Tarea.find({Creador:req.params.usuario}).exec(function(err,tareas){
+        if(err){
+            console.error("Error al buscar las tareas en la base de datos: "+err);
+        }else{
+            res.json(tareas);
+        }
+    });
+});
+
+router.get('/tareas/recibidas/:id',function(req,res){
+    console.log("Peticion Get de todos las");
+    Tarea.find({Destinatario:req.params.usuario}).exec(function(err,tareas){
+        if(err){
+            console.error("Error al buscar las tareas en la base de datos: "+err);
+        }else{
+            res.json(tareas);
+        }
+    });
+});
+
+router.post('/tareas',function(req,res){
+    console.log("Inserción en la base de datos de una tarea");
+    var newTarea = new Tarea();
+    newTarea.Titulo = req.body.titulo;
+    newTarea.descripcion = req.body.descripcion;
+    newTarea.Creador = req.body.Creador;
+    newTarea.Destinatario = req.body.Destinatario;
+    newTarea.save(function(err,tareaInsertada){
+        if(err){
+            console.log("Error al insertar el objeto: "+err);
+        }else{
+            res.json(tareaInsertada);
+        }
+    });
+});
 
 //Controler
 
