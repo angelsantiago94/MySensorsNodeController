@@ -29,8 +29,8 @@
       <label class="col-md-4 control-label" for="destinatarioTarea">Destinatario de tarea</label>  
       <div class="col-md-6">
       <select class="form-control" [(ngModel)]="destinatario" name="destinatario" id="destinatarioTarea" required>
-        <option [ngValue]="null" selected >Selecciona un usuario</option>
-        <option *ngFor="let dest of destinatarios" [ngValue]="dest" >{{dest.nombreUsuario}}</option>
+        <option [ngValue]="null" >Selecciona un usuario</option>
+        <option *ngFor="let dest of destinatarios; let i = index"[attr.selected]="!i" [ngValue]="dest" >{{dest.nombreUsuario}}</option>
       </select>
     </div>  
     </div>
