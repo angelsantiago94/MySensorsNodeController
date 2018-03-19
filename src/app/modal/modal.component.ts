@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
+import { Tarea} from '../tarea';
 export interface ConfirmModel {
   title:string;
   nombreTarea: string;
   descripcionTarea: string;
   usuario: Object;
-  destinatarios: [Object];
+  destinatarios: Array<Object>;
 }
 
 @Component({
@@ -19,7 +20,7 @@ export class ModalComponent extends DialogComponent<ConfirmModel, boolean> imple
   nombreTarea: string;
   descripcionTarea: string;
   usuario: Object;
-  destinatarios: [Object];
+  destinatarios: Array<Object>;
   destinatario: Object;
   constructor(dialogService: DialogService) {
     super(dialogService);

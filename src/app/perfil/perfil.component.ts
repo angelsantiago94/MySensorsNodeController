@@ -9,13 +9,15 @@ import { DialogService } from "ng2-bootstrap-modal";
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [AuthService]
 })
 export class PerfilComponent implements OnInit {
 
   closeResult: string;
   usuario: Object;
-  constructor( private authService: AuthService, private router: Router, private dialogService:DialogService) { }
+  destinatarios: Array<Object>;
+  constructor( private authService: AuthService, private router: Router, private dialogService: DialogService) { }
   ngOnInit() {
     this.authService.getPerfil().subscribe(perfil => {
       this.usuario = perfil.usuario;
@@ -23,12 +25,11 @@ export class PerfilComponent implements OnInit {
       console.log(err);
       return false;
     });
+    this.authService.getUsuarios().subscribe(respuesta => { this.destinatarios = respuesta; } );
   }
   showConfirm() {
-    let destinatarios;
-    this.authService.getUsuarios().subscribe(respuesta => destinatarios = respuesta );
     let disposable = this.dialogService.addDialog(ModalComponent, {
-        title:'Nueva Tarea', usuario: this.usuario, destinatarios: destinatarios })
+        title:'Nueva Tarea', usuario: this.usuario, destinatarios: this.destinatarios })
         .subscribe((isConfirmed)=> {
             //We get dialog result
             if(isConfirmed) {
