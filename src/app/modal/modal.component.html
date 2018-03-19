@@ -2,11 +2,40 @@
     <div class="modal-content">
        <div class="modal-header">
          <button type="button" class="close" (click)="close()" >&times;</button>
-         <h4 class="modal-title">{{title || 'Confirm'}}</h4>
+         <h4 class="modal-title">{{title }}</h4>
        </div>
        <div class="modal-body">
-         <p>{{message || 'Are you sure?'}}</p>
-       </div>
+        <form class="form-horizontal"> 
+        <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="nombreTarea">Nombre de tarea</label>  
+      <div class="col-md-4">
+      <input id="nombreTarea" [(ngModel)]="nombreTarea" name="nombreTarea" type="text" placeholder="Nombre de tarea" class="form-control input-md" required="">
+    </div>  
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="creadorTarea">Creador de tarea</label>  
+      <div class="col-md-4">
+      <input id="creadorTarea" [(ngModel)]="usuario.nombreUsuario" name="creadorTarea" type="text" placeholder="Descripcion de tarea" class="form-control input-md" disabled required="">
+    </div>  
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="descripcionTarea">Descripción de tarea</label>  
+      <div class="col-md-6">
+      <textarea id="descripcionTarea" [(ngModel)]="descripcionTarea" name="descripcionTarea" type="text" placeholder="Descripcion de tarea" class="form-control input-md" required=""></textarea>
+    </div>  
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="destinatarioTarea">Destinatario de tarea</label>  
+      <div class="col-md-6">
+      <select class="form-control" [(ngModel)]="destinatario" id="destinatarioTarea">
+        <option *ngFor="let dest of destinatarios" [ngValue]="dest" >1</option>
+      </select>
+    </div>  
+    </div>
+      </form>
+    </div>
+       
        <div class="modal-footer">
          <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
          <button type="button" class="btn btn-default" (click)="close()" >Cancel</button>

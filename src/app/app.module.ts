@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http'; 
+import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -48,6 +49,7 @@ import { ModalComponent } from './modal/modal.component';
     ModalComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     AceEditorModule,
@@ -55,9 +57,9 @@ import { ModalComponent } from './modal/modal.component';
     FlashMessagesModule.forRoot(),
     HttpModule,
     NgbModule.forRoot(),
-    BootstrapModalModule
+    BootstrapModalModule.forRoot({container:document.body})
   ],
-  entryComponents:[ModalComponent],
+  entryComponents: [ModalComponent],
   providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })

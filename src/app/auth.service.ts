@@ -56,4 +56,9 @@ export class AuthService {
     return tokenNotExpired('id-token');
   }
 
+  getUsuarios(){
+    return this.http.get('http://nodehome.ddns.net:3000/api/usuarios')
+    .map(res => res.json());
+  }
+
 }

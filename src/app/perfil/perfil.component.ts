@@ -25,16 +25,14 @@ export class PerfilComponent implements OnInit {
     });
   }
   showConfirm() {
+    let destinatarios;
+    this.authService.getUsuarios().subscribe(respuesta => destinatarios = respuesta );
     let disposable = this.dialogService.addDialog(ModalComponent, {
-        title:'Confirm title', 
-        message:'Confirm message'})
-        .subscribe((isConfirmed)=>{
+        title:'Nueva Tarea', usuario: this.usuario, destinatarios: destinatarios })
+        .subscribe((isConfirmed)=> {
             //We get dialog result
             if(isConfirmed) {
-                alert('accepted');
-            }
-            else {
-                alert('declined');
+                
             }
         });
     //We can close dialog calling disposable.unsubscribe();
@@ -43,7 +41,5 @@ export class PerfilComponent implements OnInit {
         disposable.unsubscribe();
     },10000);
 }
-
-  
 
 }
