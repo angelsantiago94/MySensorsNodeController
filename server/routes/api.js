@@ -1,4 +1,6 @@
 const express = require('express');
+var io = require('socket.io')();
+
 const router = express.Router();
 
 const mongoose = require('mongoose');
@@ -181,6 +183,7 @@ router.get('/tareas',function(req,res){
         if(err){
             console.error("Error al buscar las tareas en la base de datos: "+err);
         }else{
+            io.emit('nueva-tarea', "neva tarea");
             res.json(tareas);
         }
     });

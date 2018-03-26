@@ -60,5 +60,9 @@ export class AuthService {
     return this.http.get('http://nodehome.ddns.net:3000/api/usuarios')
     .map((response: Response) => response.json());
   }
+  getUsuarioID(id) {
+    return this.http.get('http://nodehome.ddns.net:3000/api/usuarios/'+id)
+    .map((response: Response) => response.json());
+  }
 
 }

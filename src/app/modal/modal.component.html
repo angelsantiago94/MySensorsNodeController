@@ -12,6 +12,9 @@
       <label class="col-md-4 control-label" for="nombreTarea">Nombre de tarea</label>  
       <div class="col-md-4">
       <input id="nombreTarea" [(ngModel)]="nombreTarea" name="nombreTarea" type="text" placeholder="Nombre de tarea" class="form-control input-md" required="">
+      <div class="invalid-feedback" id="error-nombre-tarea">
+          Por favor, inserta un nombre para la tarea
+        </div>
     </div>  
     </div>
     <div class="form-group">
@@ -24,6 +27,9 @@
       <label class="col-md-4 control-label" for="descripcionTarea">Descripción de tarea</label>  
       <div class="col-md-6">
       <textarea id="descripcionTarea" [(ngModel)]="descripcionTarea" name="descripcionTarea" type="text" placeholder="Descripcion de tarea" class="form-control input-md" required=""></textarea>
+      <div class="invalid-feedback" id="error-descripcion-tarea">
+          Por favor, inserta una descripción para la tarea
+        </div>
     </div>  
     </div>
     <div class="form-group">
@@ -33,6 +39,9 @@
         <!--<option [ngValue]="null" >Selecciona un usuario</option>-->
         <option *ngFor="let dest of destinatarios; let i = index" [attr.selected]="!i"  [ngValue]="dest" >{{dest.nombreUsuario}}</option>
       </select>
+      <div class="invalid-feedback" id="error-destinatario-tarea">
+          Por favor, inserta un destinatario para la tarea
+        </div>
     </div>  
     </div>
       

@@ -29,7 +29,11 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ListaTareasComponent } from './lista-tareas/lista-tareas.component';
 import { TareaComponent } from './tarea/tarea.component';
 import { ModalComponent } from './modal/modal.component';
+import { CardComponent } from 'ng2-bootstrap-card/ng2-bootstrap-card';
 
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
 
 @NgModule({
   declarations: [
@@ -46,7 +50,8 @@ import { ModalComponent } from './modal/modal.component';
     SensorDetailComponent,
     ListaTareasComponent,
     TareaComponent,
-    ModalComponent
+    ModalComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +62,8 @@ import { ModalComponent } from './modal/modal.component';
     FlashMessagesModule.forRoot(),
     HttpModule,
     NgbModule.forRoot(),
-    BootstrapModalModule.forRoot({container:document.body})
+    BootstrapModalModule.forRoot({container:document.body}),
+    SocketIoModule.forRoot(config)
   ],
   entryComponents: [ModalComponent],
   providers: [ValidateService, AuthService, AuthGuard],

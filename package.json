@@ -38,7 +38,9 @@
     "mongoose": "^4.13.6",
     "mysensors-controller": "1.2.0",
     "ng-bootstrap": "^1.6.3",
+    "ng-socket-io": "^0.2.4",
     "ng2-ace-editor": "^0.3.4",
+    "ng2-bootstrap-card": "^1.0.2",
     "ng2-bootstrap-modal": "^1.0.1",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.1",
@@ -47,6 +49,7 @@
     "request": "^2.83.0",
     "rxjs": "^5.5.5",
     "serialport": "^6.0.4",
+    "socket.io": "^2.0.4",
     "split": "^1.0.1",
     "zone.js": "^0.8.14"
   },
