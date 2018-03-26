@@ -106,6 +106,17 @@ router.get('/usuarios',function(req,res){
         }
     });
 });
+router.get('/usuarios:id',function(req,res){
+    console.log("Peticion Get de todos los usuarios");
+    User.find({_id:req.body.params.id}).exec(function(err,usuarios){
+        if(err){
+            console.error("Error al buscar los usuarios en la base de datos: "+err);
+        }else{
+            res.json(usuarios);
+        }
+    });
+});
+
 router.post("/registro",function(req,res,next){
     console.log("Registrando un usuario");
     let nuevoUsuario = new User({

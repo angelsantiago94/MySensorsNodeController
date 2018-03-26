@@ -1,3 +1,4 @@
+import { Tarea } from './../tarea';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class TareaComponent implements OnInit {
 
   constructor() { }
-
+  tarea: Tarea;
   ngOnInit() {
+    console.log(this.tarea.Destinatario);
   }
 
 }

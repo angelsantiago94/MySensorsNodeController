@@ -17,7 +17,7 @@ export class ListaTareasComponent implements OnInit {
   constructor(private _tareaService: TareasService) { }
 
   ngOnInit() {
-    this._tareaService.getTareas(this.usuario).subscribe(resSensorData => this.tareas = resSensorData);
+    this._tareaService.getTareas(this.usuario._id).subscribe(resSensorData => this.tareas = resSensorData);
   }
 
 }
