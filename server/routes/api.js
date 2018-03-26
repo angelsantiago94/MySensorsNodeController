@@ -197,7 +197,7 @@ router.get('/tareas/recibidas/:id',function(req,res){
     });
 });
 
-router.post('/tareas',function(req,res){
+router.post('/tareas/insertar',function(req,res){
     console.log("Inserción en la base de datos de una tarea");
     var newTarea = new Tarea();
     newTarea.Titulo = req.body.titulo;

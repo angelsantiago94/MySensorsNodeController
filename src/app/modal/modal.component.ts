@@ -1,6 +1,8 @@
+import { TareasService } from './../tareas.service';
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
 import { Tarea} from '../tarea';
+import { AuthService } from '../auth.service';
 export interface ConfirmModel {
   title:string;
   nombreTarea: string;
@@ -12,7 +14,8 @@ export interface ConfirmModel {
 @Component({
   selector: 'formulario-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  styleUrls: ['./modal.component.css'],
+  providers: [AuthService, TareasService]
 })
 export class ModalComponent extends DialogComponent<ConfirmModel, boolean> implements ConfirmModel {
 
@@ -22,12 +25,16 @@ export class ModalComponent extends DialogComponent<ConfirmModel, boolean> imple
   usuario: Object;
   destinatarios: Array<Object>;
   destinatario: Object;
-  constructor(dialogService: DialogService) {
+  constructor( private authService: AuthService,dialogService: DialogService,private tareaService: TareasService) {
     super(dialogService);
+  }
+  ngOnInit(){
+    this.authService.getUsuarios().subscribe(respuesta => { this.destinatarios = respuesta; } );
   }
   confirm() {
     // we set dialog result as true on click on confirm button, 
-    // then we can get dialog result from caller code 
+    // then we can get dialog result from caller code
+    this.tareaService.postTarea({titulo: this.nombreTarea,descripcion:this.descripcionTarea, Creador:this.usuario, Destinatario: this.destinatario}).subscribe(respuesta => console.log(respuesta));
     this.result = true;
     this.close();
   }

@@ -26,12 +26,13 @@
         
       ],
       "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/popper.js/dist/umd/popper.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/ace-builds/src-min/ace.js",
         "../node_modules/ace-builds/src-min/theme-eclipse.js",
         "../node_modules/prismjs/prism.js",
-        "../node_modules/codeflask/src/codeflask.js",
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "../node_modules/codeflask/src/codeflask.js"
         
       ],
       "environmentSource": "environments/environment.ts",

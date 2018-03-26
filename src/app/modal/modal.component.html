@@ -1,11 +1,12 @@
 <div class="modal-dialog">
+    <form class="form-horizontal" (submit)="confirm()"> 
     <div class="modal-content">
        <div class="modal-header">
          <button type="button" class="close" (click)="close()" >&times;</button>
          <h4 class="modal-title">{{title }}</h4>
        </div>
        <div class="modal-body">
-        <form class="form-horizontal"> 
+        
         <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="nombreTarea">Nombre de tarea</label>  
@@ -34,12 +35,13 @@
       </select>
     </div>  
     </div>
-      </form>
+      
     </div>
        
        <div class="modal-footer">
-         <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+         <input type="submit" class="btn btn-primary" value="OK"/>
          <button type="button" class="btn btn-default" (click)="close()" >Cancel</button>
        </div>
      </div>
+    </form>
   </div>
