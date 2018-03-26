@@ -177,7 +177,7 @@ router.get('/tareas',function(req,res){
 
 router.get('/tareas/enviadas/:id',function(req,res){
     console.log("Peticion Get de todos las");
-    Tarea.find({Creador:req.params.usuario}).exec(function(err,tareas){
+    Tarea.find({Creador:req.params.id}).exec(function(err,tareas){
         if(err){
             console.error("Error al buscar las tareas en la base de datos: "+err);
         }else{
@@ -188,7 +188,7 @@ router.get('/tareas/enviadas/:id',function(req,res){
 
 router.get('/tareas/recibidas/:id',function(req,res){
     console.log("Peticion Get de todos las");
-    Tarea.find({Destinatario:req.params.usuario}).exec(function(err,tareas){
+    Tarea.find({Destinatario:req.params.id}).exec(function(err,tareas){
         if(err){
             console.error("Error al buscar las tareas en la base de datos: "+err);
         }else{

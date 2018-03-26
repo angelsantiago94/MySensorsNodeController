@@ -29,11 +29,13 @@ export class ModalComponent extends DialogComponent<ConfirmModel, boolean> imple
     super(dialogService);
   }
   ngOnInit(){
-    this.authService.getUsuarios().subscribe(respuesta => { this.destinatarios = respuesta; } );
+    this.authService.getUsuarios().subscribe(respuesta => { this.destinatarios = respuesta;this.destinatarios.push({nombreUsuario:"Seleccione un usuario"}); } );
+    this.destinatarios.push({nombreUsuario:"Seleccione un usuario"});
   }
   confirm() {
     // we set dialog result as true on click on confirm button, 
     // then we can get dialog result from caller code
+    //console.log(this.destinatario);
     this.tareaService.postTarea({titulo: this.nombreTarea,descripcion:this.descripcionTarea, Creador:this.usuario, Destinatario: this.destinatario}).subscribe(respuesta => console.log(respuesta));
     this.result = true;
     this.close();

@@ -6,7 +6,7 @@ import "rxjs/add/operator/map";
 export class TareasService {
 
   private _getUrl = "http://nodehome.ddns.net:3000/api/tareas/recibidas/";
-  private _postUrl = "http://nodehome.ddns.net:3000/api/tareas/";
+  private _postUrl = "http://nodehome.ddns.net:3000/api/tareas/insertar";
   constructor( private _http: Http) { }
 
   getTareas(usuario){
@@ -16,7 +16,7 @@ export class TareasService {
   postTarea(tarea) {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this._http.put(this._postUrl, {tarea},  {headers: headers}).map((response:Response) => response.json());
+    return this._http.post(this._postUrl, tarea,  {headers: headers}).map((response:Response) => response.json());
   }
 
 }
