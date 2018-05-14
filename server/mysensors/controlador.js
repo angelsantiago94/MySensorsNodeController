@@ -64,18 +64,16 @@ controller.on("newNode", function(n) {
     console.log("Mensaje Recibido", m);
     if(m.sensor!=255){
         console.log("Mensaje Recibido", m);
-        if(m.command==1){
-            Sensor.collection.save({id:m.sensor,value:m.payload,updateTime: new Date()})
-        }else{
+        
         Sensor.collection.updateOne({id:m.sensor},{value:m.payload, updateTime: new Date()
-        },function(err,res){
+        },{upsert: true, setDefaultsOnInsert: true},function(err,res){
             if (err){
                 console.log("Error al actualizar sensor",err);
             }else{
                 console.log("sensor actualizado por mensaje",m);
             }
         });
-    }
+    
     }
     
   });
