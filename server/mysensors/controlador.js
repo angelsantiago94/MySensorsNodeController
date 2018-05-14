@@ -19,7 +19,7 @@ const Node = require('../models/nodes');
 
 
 controller.on("newNode", function(n) {
-    console.log("Inserción en la base de datos de un nodo: ",n);
+    console.log("Inserción en la base de datos de un nodo: " + s);
     Node.insertOne(n,function(err, res){
         if (err){
             console.log("Error al insertar nodo",err);
