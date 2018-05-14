@@ -51,7 +51,7 @@ controller.on("newNode", function(n) {
         }
     });
     s.updateTime=new Date();
-    Nodo.collection.updateOne({id:s.id},{value:s.value, updateTime: new Date()},function(err,res){
+    Sensor.collection.updateOne({id:s.id},{value:s.value, updateTime: new Date()},function(err,res){
         if (err){
             console.log("Error al actualizar sensor",err);
         }else{
@@ -64,7 +64,7 @@ controller.on("newNode", function(n) {
     console.log("Mensaje Recibido", m);
     if(m.sensor!=255){
         console.log("Mensaje Recibido", m);
-        Nodo.collection.updateOne({id:m.sensor},{value:m.payload, updateTime: new Date()
+        Sensor.collection.updateOne({id:m.sensor},{value:m.payload, updateTime: new Date()
         },function(err,res){
             if (err){
                 console.log("Error al actualizar sensor",err);
