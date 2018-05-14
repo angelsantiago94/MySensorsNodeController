@@ -15,12 +15,12 @@ mongoose.connect(db,function(err){
 });
 
 const Sensor = require('../models/sensors');
-const Node = require('../models/nodes');
+const Nodo = require('../models/nodes');
 
 
 controller.on("newNode", function(n) {
     console.log("Inserción en la base de datos de un nodo: " + n);
-    Node.insertOne(n,function(err, res){
+    Nodo.insertOne(n,function(err, res){
         if (err){
             console.log("Error al insertar nodo",err);
         }else{
@@ -31,7 +31,7 @@ controller.on("newNode", function(n) {
 
   controller.on("update", function(n) {
     console.log("Actualizacion en la base de datos de un nodo: "+ n);
-    Node.updateOne({id:n.id},n,function(err,res){
+    Nodo.updateOne({id:n.id},n,function(err,res){
         if (err){
             console.log("Error al actualizar nodo",err);
         }else{
@@ -43,7 +43,7 @@ controller.on("newNode", function(n) {
 
   controller.on("sensorUpdate", function(n,s) {
     console.log("Actualizacion en la base de datos de un sensor: "+ n +" "+s);
-    Node.updateOne({id:n.id},n,function(err,res){
+    Nodo.updateOne({id:n.id},n,function(err,res){
         if (err){
             console.log("Error al actualizar nodo",err);
         }else{
