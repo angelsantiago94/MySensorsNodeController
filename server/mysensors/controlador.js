@@ -20,7 +20,7 @@ const Nodo = require('../models/nodes');
 
 controller.on("newNode", function(n) {
     console.log("Inserción en la base de datos de un nodo: " + n);
-    db.collection("Nodes").insertOne(n,function(err, res){
+    Nodo.collection.insertOne(n,function(err, res){
         if (err){
             console.log("Error al insertar nodo",err);
         }else{
@@ -31,7 +31,7 @@ controller.on("newNode", function(n) {
 
   controller.on("update", function(n) {
     console.log("Actualizacion en la base de datos de un nodo: "+ n);
-    db.collection("Nodes").updateOne({id:n.id},n,function(err,res){
+    Nodo.collection.updateOne({id:n.id},n,function(err,res){
         if (err){
             console.log("Error al actualizar nodo",err);
         }else{
@@ -43,7 +43,7 @@ controller.on("newNode", function(n) {
 
   controller.on("sensorUpdate", function(n,s) {
     console.log("Actualizacion en la base de datos de un sensor: "+ n +" "+s);
-    db.collection("Nodes").updateOne({id:n.id},n,function(err,res){
+    Nodo.collection.updateOne({id:n.id},n,function(err,res){
         if (err){
             console.log("Error al actualizar nodo",err);
         }else{
@@ -51,7 +51,7 @@ controller.on("newNode", function(n) {
         }
     });
     s.updateTime=new Date();
-    db.collection("Sensors").updateOne({id:s.id},{value:s.value, updateTime: new Date()},function(err,res){
+    Nodo.collection.updateOne({id:s.id},{value:s.value, updateTime: new Date()},function(err,res){
         if (err){
             console.log("Error al actualizar sensor",err);
         }else{
@@ -64,7 +64,7 @@ controller.on("newNode", function(n) {
     console.log("Mensaje Recibido", m);
     if(m.sensor!=255){
         console.log("Mensaje Recibido", m);
-        db.collection("Sensors").updateOne({id:m.sensor},{value:m.payload, updateTime: new Date()
+        Nodo.collection.updateOne({id:m.sensor},{value:m.payload, updateTime: new Date()
         },function(err,res){
             if (err){
                 console.log("Error al actualizar sensor",err);
