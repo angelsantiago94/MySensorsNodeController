@@ -30,7 +30,7 @@ controller.on("newNode", function(n) {
   });
 
   controller.on("update", function(n) {
-    console.log("Actualizacion en la base de datos de un nodo: "+ n);
+    console.log("Actualizacion en la base de datos de un nodo: "+ n.toString());
     Nodo.collection.updateOne({id:n.id},n,function(err,res){
         if (err){
             console.log("Error al actualizar nodo",err);
@@ -42,7 +42,7 @@ controller.on("newNode", function(n) {
   });
 
   controller.on("sensorUpdate", function(n,s) {
-    console.log("Actualizacion en la base de datos de un sensor: "+ n +" "+s);
+    console.log("Actualizacion en la base de datos de un sensor: "+ n.toString() +" "+s.toString());
     Nodo.collection.updateOne({id:n.id},n,function(err,res){
         if (err){
             console.log("Error al actualizar nodo",err);
