@@ -61,7 +61,7 @@ controller.on("newNode", function(n) {
   });
 
   controller.on("message", function(m) {
-    
+    console.log("Mensaje Recibido", m);
     if(m.sensor!=255){
         console.log("Mensaje Recibido", m);
         Sensor.updateOne({id:m.sensor},{value:m.payload, updateTime: new Date()

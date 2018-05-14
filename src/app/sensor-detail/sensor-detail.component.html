@@ -1,6 +1,6 @@
 <div class="well">
 <div class="card">
-  <img class="card-img-top img-responsive" src="../../assets/termometro.png">
+  <img *ngIf='"V_TEMP" == tipos[sensor.type] ' class="card-img-top img-responsive" src="../../assets/termometro.png">
   <div class="card-header">
     <label *ngIf="!editNombre">
       {{sensor.nombre}}
@@ -16,6 +16,7 @@
   </div>
   <div class="card-body">
     <label>Última actualización:</label>{{sensor.updateTime}}
+    tipo: {{sensor.type}}
   </div>
   <div class="card-footer">
     <a (click)="onEditClick()" class="card-link"><span class="glyphicon glyphicon-edit"></span>Editar Nombre</a>
