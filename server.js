@@ -33,7 +33,7 @@ app.get('*',(req,res)=>{
 });
 
 var apiMySensors = require('./server/mysensors/controlador');
-
+app.use('/mysensors',apiMySensors);
 
 app.listen(port,function(){
     console.log("El servidor está desplegado en localhost:"+port);

@@ -42,4 +42,12 @@ export class SensorDetailComponent implements OnInit {
     this._sensorService.updateNombreSensores(this.sensor._id, this.sensor.nombre).subscribe(resSensorData => { this.sensor = resSensorData;
       this.editNombre = false; } );
   }
+
+  onApagar(){
+    console.log("Apagando");
+  }
+
+  onEncender(){
+    console.log("Encendiendo");
+  }
 }

@@ -89,3 +89,5 @@ controller.on("newNode", function(n) {
       });
     res.json({codigoRespuesta:"OK"});
 });
+
+module.exports = router;
