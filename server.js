@@ -35,7 +35,6 @@ var http=require('http');
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 io.on('connection', function(socket){ 
-    sockets.add(socket);
 
     socket.on('disconnect', () => {
         console.log(`Deleting socket: ${socket.id}`);
