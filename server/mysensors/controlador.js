@@ -51,7 +51,7 @@ controller.on("newNode", function(n) {
         }
     });
     s.updateTime=new Date();
-    Sensor.collection.updateOne({id:s.id},{$set: {id:s.id,value:s.value, updateTime: new Date()}},{upsert: true, setDefaultsOnInsert: true},function(err,res){
+    Sensor.collection.updateOne({id:s.id},{$set: {id:s.id,value:s.value, type: s.type, updateTime: new Date()}},{upsert: true, setDefaultsOnInsert: true},function(err,res){
         if (err){
             console.log("Error al actualizar sensor",err);
         }else{
