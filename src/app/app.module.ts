@@ -31,9 +31,9 @@ import { TareaComponent } from './tarea/tarea.component';
 import { ModalComponent } from './modal/modal.component';
 import { CardComponent } from 'ng2-bootstrap-card/ng2-bootstrap-card';
 
-import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
+const config: SocketIoConfig = { url: 'http://nodehome.ddns.net:3000', options: {} };
 
 @NgModule({
   declarations: [

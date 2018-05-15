@@ -32,8 +32,29 @@ app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname,'dist/index.html'));
 });
 
+var io = require('socket.io')(app);
+io.on('connection', function(socket){ 
+    sockets.add(socket);
+
+    socket.on('disconnect', () => {
+        console.log(`Deleting socket: ${socket.id}`);
+        sockets.delete(socket);
+        console.log(`Remaining sockets: ${sockets.size}`);
+      });
+
+    socket.on('sensor-update', () =>{
+        io.emit('broadcast', "Actualiza Sensores"); // emit an event to all connected sockets
+    });
+
+});
+
+
+
 var apiMySensors = require('./server/mysensors/controlador');
 app.use('/mysensors',apiMySensors);
+
+
+
 
 app.listen(port,function(){
     console.log("El servidor está desplegado en localhost:"+port);

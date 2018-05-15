@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sensor} from './../sensor';
 import { SensorService } from '../sensor.service';
-
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'sensor-list',
   templateUrl: './sensor-list.component.html',
@@ -12,10 +12,13 @@ export class SensorListComponent implements OnInit {
 
   sensores: Array<Sensor>;
   
-  constructor(private _sensorService: SensorService) { }
+  constructor(private _sensorService: SensorService, private socket: Socket) { }
 
   ngOnInit() {
     this._sensorService.getSensores().subscribe(resSensorData => this.sensores = resSensorData);
+    this.socket.on("sensor-update", function(){
+      this._sensorService.getSensores().subscribe(resSensorData => this.sensores = resSensorData);
+    })
   }
 
 }

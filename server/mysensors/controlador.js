@@ -56,6 +56,7 @@ controller.on("newNode", function(n) {
             console.log("Error al actualizar sensor",err);
         }else{
             console.log("sensor actualizado",s);
+            io.emit('sensor-update', "Actualiza Sensores"); // emit an event to all connected sockets
         }
     });
   });

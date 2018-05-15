@@ -7,6 +7,8 @@ export class SensorService {
 
   private _getUrl = "http://nodehome.ddns.net:3000/api/sensores";
   private _putUrl = "http://nodehome.ddns.net:3000/api/sensores/setNombre/";
+
+  private _mensajesUrl = "http://nodehome.ddns.net:3000/mysensors/sendMensaje/";
   constructor( private _http: Http) { }
 
   getSensores(){
@@ -17,6 +19,13 @@ export class SensorService {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this._http.put(this._putUrl+id, {nombre: nombre},  {headers: headers}).map((response:Response) => response.json());
+  }
+
+  sendMensaje(mensaje){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this._http.post(this._mensajesUrl, mensaje, {headers: headers})
+    .map(res => res.json());
   }
 
 }

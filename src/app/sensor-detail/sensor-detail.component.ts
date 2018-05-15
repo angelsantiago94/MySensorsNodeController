@@ -45,9 +45,22 @@ export class SensorDetailComponent implements OnInit {
 
   onApagar(){
     console.log("Apagando");
+
+    this._sensorService.sendMensaje({destination: '255', sensor: this.sensor.id, command: 1,type: this.sensor.type, payload:'0' }).subscribe(resSensorData => { 
+      console.log(resSensorData);
+      if(resSensorData.codigoRespuesta=="OK"){
+        this.sensor.value=0;
+      }
+     } );
   }
 
   onEncender(){
     console.log("Encendiendo");
+    this._sensorService.sendMensaje({destination: 5, sensor: this.sensor.id, command: 1,type: this.sensor.type, payload:'1' }).subscribe(resSensorData => { 
+      console.log(resSensorData);
+      if(resSensorData.codigoRespuesta=="OK"){
+        this.sensor.value=1;
+      }
+     } );
   }
 }
