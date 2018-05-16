@@ -38,7 +38,7 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', () => {
         console.log(`Deleting socket: ${socket.id}`);
-        sockets.delete(socket);
+        
         console.log(`Remaining sockets: ${sockets.size}`);
       });
 
