@@ -78,6 +78,7 @@ controller.on("newNode", function(n) {
                 console.log("Error al actualizar sensor",err);
             }else{
                 console.log("sensor actualizado por mensaje",m);
+                request('http://localhost:3000/msupdate', function (error, response, body) {});
             }
         });
     
