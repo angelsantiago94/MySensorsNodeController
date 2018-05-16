@@ -19,6 +19,7 @@ export class SensorListComponent implements OnInit {
 
   constructor(private _sensorService: SensorService, private socket: SocketService) {
       this.socket.socket.on('sensor-update',()=>{
+        console.log("socket");
         this.sensores = [];
         this._sensorService.getSensores().subscribe(resSensorData => this.sensores = resSensorData);
       });
