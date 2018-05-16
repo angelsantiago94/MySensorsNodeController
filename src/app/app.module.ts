@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -31,9 +32,7 @@ import { TareaComponent } from './tarea/tarea.component';
 import { ModalComponent } from './modal/modal.component';
 import { CardComponent } from 'ng2-bootstrap-card/ng2-bootstrap-card';
 
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-
-const config: SocketIoConfig = { url: 'http://nodehome.ddns.net:3000', options: {} };
+import { SocketService } from './socket.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +62,7 @@ const config: SocketIoConfig = { url: 'http://nodehome.ddns.net:3000', options: 
     HttpModule,
     NgbModule.forRoot(),
     BootstrapModalModule.forRoot({container:document.body}),
-    SocketIoModule.forRoot(config)
+    
   ],
   entryComponents: [ModalComponent],
   providers: [ValidateService, AuthService, AuthGuard],
