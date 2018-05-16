@@ -49,6 +49,7 @@ io.sockets.on('connection', function(socket){
 });
 
 app.get("/msupdate",(req,res)=>{
+    console.log("####### Pidiendo actualizar sensores");
     io.emit('sensor-update', "Actualiza  Sensores");
 });
 
