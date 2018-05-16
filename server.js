@@ -48,7 +48,9 @@ io.on('connection', function(socket){
 
 });
 
-
+app.get("/msupdate",(req,res)=>{
+    io.emit('sensor-update', "Actualiza Sensores");
+});
 
 var apiMySensors = require('./server/mysensors/controlador');
 app.use('/mysensors',apiMySensors);

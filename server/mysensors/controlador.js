@@ -6,6 +6,11 @@ const router = express.Router();
 
 const mongoose = require('mongoose');
 const db ="mongodb://root:root@ds131546.mlab.com:31546/my-sensors-controller";
+
+var request = require('request');
+
+
+
 mongoose.Promise=global.Promise;
 
 mongoose.connect(db,function(err){
@@ -56,7 +61,8 @@ controller.on("newNode", function(n) {
             console.log("Error al actualizar sensor",err);
         }else{
             console.log("sensor actualizado",s);
-            io.emit('sensor-update', "Actualiza Sensores"); // emit an event to all connected sockets
+            //io.emit('sensor-update', "Actualiza Sensores"); // emit an event to all connected sockets
+            request('http://localhost:3000/msupdate', function (error, response, body) {});
         }
     });
   });
