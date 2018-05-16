@@ -100,6 +100,7 @@ controller.on("newNode", function(n) {
         type: req.body.type,
         payload: req.body.payload
       });
+      global.io.sockets.emit('sensor-update', "Actualiza  Sensores");
     res.json({codigoRespuesta:"OK"});
 });
 
