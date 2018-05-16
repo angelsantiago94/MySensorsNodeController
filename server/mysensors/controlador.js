@@ -82,7 +82,7 @@ controller.on("newNode", function(n) {
                 console.log("Error al actualizar sensor",err);
             }else{
                 console.log("sensor actualizado por mensaje",m);
-                
+                global.io.sockets.emit('sensor-update', "Actualiza  Sensores");
                 
             }
         });
@@ -100,7 +100,7 @@ controller.on("newNode", function(n) {
         type: req.body.type,
         payload: req.body.payload
       });
-      global.io.sockets.emit('sensor-update', "Actualiza  Sensores");
+      
     res.json({codigoRespuesta:"OK"});
 });
 
