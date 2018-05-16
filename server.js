@@ -42,6 +42,7 @@ io.sockets.on('connection', function(socket){
       });
 
     socket.on('sensor-update', () =>{
+        console.log("####### Sensor UPDATE ######");
         io.emit('ActualizaSensores', "Actualiza Sensores"); // emit an event to all connected sockets
     });
 
