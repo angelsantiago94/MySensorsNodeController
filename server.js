@@ -39,7 +39,6 @@ io.on('connection', function(socket){
     socket.on('disconnect', () => {
         console.log(`Deleting socket: ${socket.id}`);
         
-        console.log(`Remaining sockets: ${sockets.size}`);
       });
 
     socket.on('sensor-update', () =>{
