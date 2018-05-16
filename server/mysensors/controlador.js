@@ -30,7 +30,7 @@ controller.on("newNode", function(n) {
             console.log("Error al insertar nodo",err);
         }else{
             console.log("nodo insertado",n);
-            global.io.sockets.emit('sensor-update', "Actualiza  Sensores");
+            
         }
     })
   });
@@ -42,7 +42,7 @@ controller.on("newNode", function(n) {
             console.log("Error al actualizar nodo",err);
         }else{
             console.log("nodo actualizado",n);
-            global.io.sockets.emit('sensor-update', "Actualiza  Sensores");
+            
         }
     });
     
@@ -55,7 +55,7 @@ controller.on("newNode", function(n) {
             console.log("Error al actualizar nodo",err);
         }else{
             console.log("nodo actualizado",n);
-            global.io.sockets.emit('sensor-update', "Actualiza  Sensores");
+           
         }
     });
     s.updateTime=new Date();
@@ -82,8 +82,8 @@ controller.on("newNode", function(n) {
                 console.log("Error al actualizar sensor",err);
             }else{
                 console.log("sensor actualizado por mensaje",m);
-                request('http://localhost:3000/msupdate', function (error, response, body) {});
-                global.io.sockets.emit('sensor-update', "Actualiza  Sensores");
+                
+                
             }
         });
     
