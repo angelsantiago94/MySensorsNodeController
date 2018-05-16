@@ -65,7 +65,7 @@ controller.on("newNode", function(n) {
         }else{
             console.log("sensor actualizado",s);
             //io.emit('sensor-update', "Actualiza Sensores"); // emit an event to all connected sockets
-            request('http://localhost:3000/msupdate', function (error, response, body) {});
+            //request('http://localhost:3000/msupdate', function (error, response, body) {});
             global.io.sockets.emit('sensor-update', "Actualiza  Sensores");
         }
     });
