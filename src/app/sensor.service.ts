@@ -5,10 +5,10 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class SensorService {
 
-  private _getUrl = "http://nodehome.ddns.net:3000/api/sensores";
-  private _putUrl = "http://nodehome.ddns.net:3000/api/sensores/setNombre/";
+  private _getUrl = "http://nodehome.ddns.net:1856/api/sensores";
+  private _putUrl = "http://nodehome.ddns.net:1856/api/sensores/setNombre/";
 
-  private _mensajesUrl = "http://nodehome.ddns.net:3000/mysensors/sendMensaje/";
+  private _mensajesUrl = "http://nodehome.ddns.net:1856/mysensors/sendMensaje/";
   constructor( private _http: Http) { }
 
   getSensores(){

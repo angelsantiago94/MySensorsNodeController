@@ -14,14 +14,14 @@ export class AuthService {
   registroUsuario(usuario) {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://nodehome.ddns.net:3000/api/registro', usuario, {headers: headers})
+    return this.http.post('http://nodehome.ddns.net:1856/api/registro', usuario, {headers: headers})
     .map(res => res.json());
   }
 
   loginUsuario(usuario){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://nodehome.ddns.net:3000/api/login', usuario, {headers: headers})
+    return this.http.post('http://nodehome.ddns.net:1856/api/login', usuario, {headers: headers})
     .map(res => res.json());
   }
 
@@ -43,7 +43,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://nodehome.ddns.net:3000/api/perfil', {headers: headers})
+    return this.http.get('http://nodehome.ddns.net:1856/api/perfil', {headers: headers})
     .map(res => res.json());
   }
 
@@ -57,11 +57,11 @@ export class AuthService {
   }
 
   getUsuarios() {
-    return this.http.get('http://nodehome.ddns.net:3000/api/usuarios')
+    return this.http.get('http://nodehome.ddns.net:1856/api/usuarios')
     .map((response: Response) => response.json());
   }
   getUsuarioID(id) {
-    return this.http.get('http://nodehome.ddns.net:3000/api/usuarios/'+id)
+    return this.http.get('http://nodehome.ddns.net:1856/api/usuarios/'+id)
     .map((response: Response) => response.json());
   }
 
