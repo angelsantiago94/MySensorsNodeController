@@ -3,6 +3,7 @@
   <img *ngIf='"V_TEMP" == tipos[sensor.type] ' class="card-img-top img-responsive" src="../../assets/termometro.png">
   <img *ngIf='"V_STATUS" == tipos[sensor.type] && sensor.value == 1 ' class="card-img-top img-responsive" (click)="onApagar()" src="../../assets/bombillaON.png">
   <img *ngIf='"V_STATUS" == tipos[sensor.type] && sensor.value == 0 ' class="card-img-top img-responsive" (click)="onEncender()" src="../../assets/bombillaOFF.png">
+  <img *ngIf='"V_IR_SEND" == tipos[sensor.type] ' class="card-img-top img-responsive" (click)="onIRSend()" src="../../assets/bombillaON.png"> 
   <div class="card-header">
     <label *ngIf="!editNombre">
       {{sensor.nombre}}

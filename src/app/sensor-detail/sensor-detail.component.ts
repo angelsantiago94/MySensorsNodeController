@@ -63,4 +63,14 @@ export class SensorDetailComponent implements OnInit {
       }
      } );
   }
+  
+  onIRSend(){
+    console.log("irsend");
+    this._sensorService.sendMensaje({destination: 7, sensor: this.sensor.id, command: 1,type: this.sensor.type, payload:'1' }).subscribe(resSensorData => { 
+      console.log(resSensorData);
+      if(resSensorData.codigoRespuesta=="OK"){
+        this.sensor.value=1;
+      }
+     } );
+  }
 }
